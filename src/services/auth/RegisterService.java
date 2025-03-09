@@ -40,6 +40,7 @@ public class RegisterService {
 
         User newUser = new User(name, email, cpf, phone, address, birthday);
         users.add(newUser);
+        System.out.println(newUser);
         System.out.println("Registro realizado com sucesso!");
     }
 

@@ -25,6 +25,13 @@ public class User {
     }
 
     public User(String name, String email, String cpf, String phone, String address, String birthday) {
+        this.id = UUID.randomUUID().toString();;
+        this.name = name;
+        this.email = email;
+        this.cpf = cpf;
+        this.phone = phone;
+        this.address = address;
+        this.birthday = birthday;
     }
 
     public List<Account> getAccounts() {
@@ -45,7 +52,7 @@ public class User {
     }
 
     public String getEmail() {
-        return email;
+        return this.email;
     }
 
     public void setEmail(String email) {

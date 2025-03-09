@@ -1,76 +1,97 @@
-# Fintech Project
+# Projeto Fintech Fiap
 
-## 1. Visão Geral
+Este projeto foi desenvolvido como parte de um trabalho acadêmico na FIAP (Faculdade de Informação e Administração Paulista), com o objetivo de simular um sistema de gerenciamento de transações financeiras. A aplicação é um sistema básico de uma fintech, permitindo o gerenciamento de usuários, registros de transações, autenticação de login e geração de extratos bancários.
 
-O Fintech Project é uma simulação de sistema financeiro desenvolvido em Java, criado para os requisitos acadêmicos da FIAP. O projeto demonstra conceitos fundamentais da Programação Orientada a Objetos (POO), como encapsulamento, modularidade, e práticas de design como idempotência. O sistema abrange a gestão de usuários, contas bancárias, transações financeiras, categorização (tags e categorias), geração de extratos e serviços de autenticação.
+## Tecnologias Utilizadas
 
----
+- **Java 21**: Linguagem de programação utilizada para o desenvolvimento da aplicação.
+- **IntelliJ IDEA**: Ambiente de desenvolvimento integrado (IDE) utilizado para o desenvolvimento do projeto.
+- **Git**: Controle de versão utilizado para o versionamento do código-fonte.
 
-## 2. Objetivo
+## Funcionalidades
 
-**Intuito e Objetivo:**
-- **Objetivo:** Desenvolver uma aplicação que simule as operações básicas de um sistema financeiro (Fintech), permitindo o registro, autenticação e gerenciamento de usuários, bem como a realização e registro de transações financeiras.
-- **Intuito:** Demonstrar a aplicação de conceitos avançados de POO, organização modular e a implementação de mecanismos de idempotência, assegurando que operações duplicadas não sejam processadas indevidamente.
+- **Cadastro de Usuários**: Permite o registro de usuários, validando a duplicação de e-mails.
+- **Autenticação de Login**: Sistema simples de login via e-mail.
+- **Processamento de Transações**: Gerencia transações financeiras, registrando logs de cada operação.
+- **Geração de Extratos Bancários**: Permite a geração de extratos bancários com base nas transações realizadas em um período.
+- **Registro de Logs de Transações**: Cada transação é registrada com informações detalhadas, como status, valor e data/hora.
 
----
+## Intuito do Projeto
 
-## 3. Tecnologias Utilizadas
+Este projeto foi desenvolvido com o objetivo de:
 
-- **Linguagem:** Java (versão 21 da JDK)
-- **Paradigma:** Programação Orientada a Objetos (POO)
-- **Ferramentas:** IntelliJ IDEA (ou outra IDE Java de sua preferência)
-- **Estruturas de Dados:** Listas, Mapas e demais coleções padrão do Java
-- **Princípios Aplicados:** Encapsulamento, modularidade, idempotência
+- **Simular um sistema financeiro básico** de uma fintech, com funcionalidades essenciais como cadastro de usuários, processamento de transações e geração de extratos bancários.
+- **Trabalho acadêmico da FIAP**, com foco em conceitos de programação orientada a objetos (POO) e desenvolvimento de sistemas financeiros.
 
----
+## Como Clonar e Executar o Projeto
 
-## 4. Estrutura do Projeto
+### Pré-requisitos
 
-### Entidades (models)
-- **User:** Contém informações pessoais, conta e histórico de transações do usuário.
-- **Account:** Representa a conta bancária do usuário, com saldo armazenado (em centavos) e operações de depósito/saque.
-- **Transaction:** Registra os detalhes de uma transação financeira, incluindo valor, tipo, data e usuário envolvido.
-- **TransactionLog:** Armazena registros (logs) referentes às transações realizadas.
-- **Tag:** Define etiquetas para categorizar transações (ex.: "Pix", "TED", "Boleto").
-- **Category:** Classifica as transações em categorias (ex.: "Alimentação", "Transporte").
-- **Statement:** Gera e representa extratos bancários para períodos específicos.
+- **Java 21** ou superior instalado em sua máquina.
+- **IntelliJ IDEA** ou outra IDE de sua preferência (recomenda-se o IntelliJ).
+- **Git** instalado para clonar o repositório.
 
-### Serviços
-- **IdempotencyKeyGenerator:** Gera chaves únicas para evitar o processamento duplicado de transações.
-- **TransactionService:** Gerencia o processamento das transações, aplicando regras de idempotência.
-- **AuthenticateService:** Gerencia os processos de autenticação (login e registro) dos usuários.
+### Passos para Clonar o Repositório
 
----
+1. Abra o terminal ou prompt de comando.
+2. Navegue até o diretório onde deseja clonar o repositório.
+3. Execute o seguinte comando para clonar o repositório:
 
-## 5. Como Testar a Aplicação
-
-### Pré-requisitos:
-- Ter o Java 17 (ou superior) instalado.
-- Utilizar uma IDE compatível (como IntelliJ IDEA ou Eclipse).
-
-### Passos para Execução:
-1. **Clonar o Repositório:**
-```sh
-   git clone https://github.com/seu-usuario/fintech-project.git
-   cd fintech-project
+```bash
+git clone https://github.com/seu-usuario/nome-do-repositorio.git
 ```
 
-2. - **Importar o Projeto na IDE:**  
-     Abra a IDE e importe o projeto como um projeto Java.
+### Como Executar no IntelliJ IDEA
 
-3. **Executar a Classe Principal:**  
-   Execute a classe `Main.java` para iniciar a aplicação. Esta classe servirá como ponto de entrada e deverá conter exemplos de:
-    - Registro e autenticação de usuários via `AuthenticateService`.
-    - Operações bancárias (depósito, saque) realizadas em instâncias de `Account`.
-    - Processamento de transações e registro nos logs de cada usuário.
-    - Geração de extratos através da classe `Statement`.
+1. **Importar o projeto**:
 
-4. **Verificar Saída:**  
-   A saída será exibida no console, com mensagens que indicam a execução dos métodos (ex.: "Usuário autenticado com sucesso", "Depósito realizado", "Extrato gerado", etc.).
+   - Abra o IntelliJ IDEA.
+   - Selecione **"Open"** e navegue até o diretório onde o repositório foi clonado.
+   - Selecione a pasta do projeto e clique em **"OK"** para abrir o projeto.
+2. **Configurar o JDK**:
 
-## 6. Considerações Finais
+   - Verifique se o **Java 21** ou superior está configurado no IntelliJ IDEA.
+   - Para configurar o JDK, vá até **File > Project Structure > Project** e selecione o JDK adequado.
+3. **Executar o Projeto**:
 
-- **Encapsulamento:** Todos os atributos são privados, com métodos de acesso (getters e setters) para garantir a integridade dos dados.
-- **Modularidade:** A separação entre modelos e serviços permite uma manutenção mais simples e escalabilidade.
-- **Idempotência:** Implementada para evitar o processamento duplicado de transações, garantindo consistência nas operações.
-- **Histórico Personalizado:** Cada usuário possui um log individual, facilitando a auditoria e o rastreamento das operações.
+   - Após abrir o projeto, localize a classe principal (`Main` ou outra classe com o método `main()`).
+   - Clique com o botão direito na classe e selecione **"Run"** para executar o projeto.
+
+### Como Usar
+
+1. **Cadastro de Usuário**:  
+   Ao rodar a aplicação, será solicitado o cadastro de um novo usuário, com informações como nome, e-mail, CPF, telefone e endereço.
+
+2. **Autenticação**:  
+   Após o cadastro, você pode realizar o login utilizando o e-mail registrado. O sistema não requer senha (para fins acadêmicos, recomendamos aprimorar a segurança).
+
+3. **Processamento de Transações**:  
+   O sistema permite registrar transações financeiras. Cada transação será registrada com um status (PENDING, COMPLETED, FAILED, CANCELED).
+
+4. **Geração de Extratos**:  
+   Após registrar transações, você pode gerar extratos bancários para visualizar o histórico de transações.
+
+
+---
+
+## Estrutura do Projeto
+
+O projeto é organizado em várias classes principais, com funcionalidades como cadastro de usuários, processamento de transações, autenticação e geração de extratos. Confira abaixo a estrutura geral das principais classes:
+
+- **User**: Representa um usuário do sistema.
+- **TransactionLog**: Registra o log das transações realizadas.
+- **TransactionService**: Gerencia o processamento de transações. (workingOn)
+- **Login**: Gerencia o login e logout de usuários.
+- **RegisterService**: Gerencia o processo de registro de novos usuários.
+- **CardInfo**: Armazena as informações dos cartões de crédito/débito.
+- **Statement**: Gera extratos bancários com base nas transações realizadas.
+
+---
+
+## Contribuições
+
+Para acessar a organization do repositório acesse: https://github.com/taverna-fiap/fintech/
+O repositório também se encontra no link: https://github.com/G-shiy/Fintech
+## Licença
+
+Este projeto está licenciado sob a licença MIT - veja o arquivo LICENSE para mais detalhes.
