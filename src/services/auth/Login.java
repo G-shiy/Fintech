@@ -1,6 +1,6 @@
 package services.auth;
 
-import models.entities.User;
+import models.entities.concrete.User;
 
 public class Login {
     private static User loggedUser = null;
