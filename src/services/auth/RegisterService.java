@@ -1,6 +1,6 @@
 package services.auth;
 
-import models.entities.User;
+import models.entities.concrete.User;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -8,40 +8,23 @@ import java.util.Scanner;
 public class RegisterService {
     private static final List<User> users = new ArrayList<>();
 
-    public static void registerUser() {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("=== Registro de Usuário ===");
-        System.out.print("Nome: ");
-        String name = scanner.nextLine();
-
-        System.out.print("E-mail: ");
-        String email = scanner.nextLine();
-
-        System.out.print("CPF: ");
-        String cpf = scanner.nextLine();
-
-        System.out.print("Telefone: ");
-        String phone = scanner.nextLine();
-
-        System.out.print("Endereço: ");
-        String address = scanner.nextLine();
-
-        System.out.print("Data de nascimento (yyyy-MM-dd): ");
-        String birthday = scanner.nextLine();
+    public static User registerUser(String name, String email,String password,String confirmPassword ,String cpf, String phone, String address, String birthday ) {
+        if(!password.equals(confirmPassword)) {
+            throw new IllegalArgumentException("Passwords do not match");
+        }
 
         // Verifica se o e-mail já está cadastrado
         for (User u : users) {
             if (u.getEmail().equalsIgnoreCase(email)) {
-                System.out.println("Erro: E-mail já cadastrado.");
-                return;
+                throw new IllegalArgumentException("E-mail já cadastrado.");
             }
         }
 
-        User newUser = new User(name, email, cpf, phone, address, birthday);
+        User newUser = new User(name, email,password ,cpf, phone, address, birthday);
         users.add(newUser);
         System.out.println(newUser);
         System.out.println("Registro realizado com sucesso!");
+        return newUser;
     }
 
     public static List<User> getUsers() {
