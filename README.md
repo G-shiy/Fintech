@@ -38,7 +38,7 @@ Este projeto foi desenvolvido com o objetivo de:
 3. Execute o seguinte comando para clonar o repositório:
 
 ```bash
-git clone https://github.com/seu-usuario/nome-do-repositorio.git
+git clone https://github.com/G-shiy/Fintech.git
 ```
 
 ### Como Executar no IntelliJ IDEA
