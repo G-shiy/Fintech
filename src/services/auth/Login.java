@@ -5,6 +5,7 @@ import models.entities.concrete.User;
 public class Login {
     private static User loggedUser = null;
 
+    //TODO Atualizar o método pedindo a senha
     public static void loginUser(String email) {
         for (User user : RegisterService.getUsers()) {
             if (user.getEmail().equalsIgnoreCase(email)) {
