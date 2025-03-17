@@ -1,4 +1,6 @@
-package models.entities;
+package models.entities.concrete;
+
+import models.entities.abstracts.Account;
 
 import java.util.List;
 import java.util.UUID;
@@ -7,16 +9,18 @@ public class User {
     private String id;
     private String name;
     private String email;
+    private String password;
     private String cpf;
     private String phone;
     private String address;
     private String birthday;
     private List<Account> accounts;
 
-    public User(String name, String email, String cpf, String phone, String address, String birthday, List<Account> accounts) {
+    public User(String name, String email, String cpf, String phone, String address, String birthday,String password ,List<Account> accounts) {
         this.id = UUID.randomUUID().toString();;
         this.name = name;
         this.email = email;
+        this.password = password;
         this.cpf = cpf;
         this.phone = phone;
         this.address = address;
@@ -24,10 +28,11 @@ public class User {
         this.accounts = accounts;
     }
 
-    public User(String name, String email, String cpf, String phone, String address, String birthday) {
+    public User(String name, String email, String cpf, String phone, String address, String birthday, String password) {
         this.id = UUID.randomUUID().toString();;
         this.name = name;
         this.email = email;
+        this.password = password;
         this.cpf = cpf;
         this.phone = phone;
         this.address = address;
