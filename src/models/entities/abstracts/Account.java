@@ -29,8 +29,8 @@ public abstract class Account {
 
     public void addCard(CardInfo card) {
         this.card.add(new CardInfo(card.getCardId(), card.getCardName(), card.getCardNumber(), card.getCvv(), card.getExpiration(), card.getExpiration()));
-    } // alterar a forma de adição posteriormente
-
+    }
+    // alterar a forma de adição posteriormente
 //    public float convertBalance() {
 //        float convertedBalance;
 //        convertedBalance = (float) (balance/100);

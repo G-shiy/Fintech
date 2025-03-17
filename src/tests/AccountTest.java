@@ -1,6 +1,7 @@
 package tests;
 
 import models.entities.concrete.CheckingAccount;
+import models.entities.concrete.SavingAccount;
 import models.entities.concrete.User;
 import services.auth.Login;
 import services.auth.RegisterService;
@@ -52,14 +53,14 @@ public class AccountTest {
 
         System.out.println("\n=== TESTE: TRANSAÇÃO COM LOGIN ===");
         Login.loginUser(newuser.getEmail());
-        Account account = new CheckingAccount(1, "Banco A", "001", "45678-9", new BigDecimal("5000"));
-        Transaction transaction = new Transaction(new BigDecimal("200"), account);
+        Account checkingAccount = new CheckingAccount(1, "Banco A", "001", "45678-9", new BigDecimal("5000"));
+        Transaction transaction = new Transaction(new BigDecimal("200"), checkingAccount);
         transaction.process();
 
         System.out.println("\n=== TESTE: LOGOUT E TENTATIVA DE TRANSAÇÃO ===");
         Login.logout();
         try {
-            Transaction transaction2 = new Transaction(new BigDecimal("200"), account);
+            Transaction transaction2 = new Transaction(new BigDecimal("200"), checkingAccount);
             transaction2.process();
         } catch (IllegalStateException e) {
             System.out.println("Erro esperado: " + e.getMessage());
@@ -75,7 +76,20 @@ public class AccountTest {
             System.out.println("Erro esperado: " + e.getMessage());
         }
 
-        System.out.println("\n=== TODOS OS TESTES FORAM EXECUTADOS ===");
+        System.out.println("\n=== TESTE: CRIAÇÃO E TRANSAÇÃO EM POUPANÇA ===");
+        Account savingAccount = new SavingAccount(3, "Banco C", "003", "12345-6", new BigDecimal("3000"), new BigDecimal("0.02"));
+        try {
+            Transaction savingTransaction = new Transaction(new BigDecimal("500"), savingAccount);
+            savingTransaction.process();
+            System.out.println("Transação realizada com sucesso.");
+        } catch (IllegalArgumentException e) {
+            System.out.println("Erro inesperado: " + e.getMessage());
+        }
 
+        System.out.println("\n=== TESTE: APLICAR RENDIMENTO NA POUPANÇA ===");
+        ((SavingAccount) savingAccount).applyIncome();
+        System.out.println("Novo saldo após rendimento: " + savingAccount.toString());
+
+        System.out.println("\n=== TODOS OS TESTES FORAM EXECUTADOS ===");
     }
 }
