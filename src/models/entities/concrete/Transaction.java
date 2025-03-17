@@ -1,5 +1,6 @@
-package models.entities;
+package models.entities.concrete;
 
+import models.entities.abstracts.Account;
 import services.auth.Login;
 import models.enums.TransactionStatus;
 import java.math.BigDecimal;

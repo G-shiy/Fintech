@@ -1,6 +1,6 @@
 package services;
 
-import models.entities.Transaction;
+import models.entities.concrete.Transaction;
 
 public class TransactionService {
     public void processTransaction(Transaction transaction) {
